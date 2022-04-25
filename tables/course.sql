@@ -11,5 +11,7 @@ CREATE TABLE course
     finsh_date           DATE               NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (professor_id) REFERENCES professor (id),
-    FOREIGN KEY (faculty_name) REFERENCES faculty (name)
+    FOREIGN KEY (faculty_name) REFERENCES faculty (name),
+    CHECK ( ects > 0 ),
+    CHECK ( DATEDIFF(TO_DAYS(finsh_date), TO_DAYS(start_date)) > 0 )
 );

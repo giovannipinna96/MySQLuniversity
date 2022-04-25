@@ -5,6 +5,7 @@ CREATE TABLE substitution
     substitute_professor_id INT                NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (replaced_professor_id) REFERENCES professor (id),
-    FOREIGN KEY (substitute_professor_id) REFERENCES professor (id)
+    FOREIGN KEY (substitute_professor_id) REFERENCES professor (id),
+    CHECK ( replaced_professor_id != substitute_professor_id )
 
 );

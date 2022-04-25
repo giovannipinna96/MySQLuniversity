@@ -5,5 +5,6 @@ CREATE TABLE professor
     surname       VARCHAR(50) NOT NULL,
     data_of_birth DATE        NOT NULL,
     email         VARCHAR(100),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    CHECK (DATEDIFF(TO_DAYS(CURDATE()), TO_DAYS(data_of_birth)) / 360 > 24)
 );
