@@ -4,7 +4,9 @@ CREATE TABLE professor
     name          VARCHAR(50) NOT NULL,
     surname       VARCHAR(50) NOT NULL,
     data_of_birth DATE        NOT NULL,
+    dt            DATE DEFAULT (CURRENT_DATE),
     email         VARCHAR(100),
     PRIMARY KEY (id),
-    CHECK (DATEDIFF(TO_DAYS(CURDATE()), TO_DAYS(data_of_birth)) / 360 > 24)
+    CONSTRAINT prof_older_24
+        CHECK (DATEDIFF(TO_DAYS(dt), TO_DAYS(data_of_birth)) / 360 > 24)
 );
