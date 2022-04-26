@@ -8,5 +8,5 @@ CREATE TABLE professor
     email         VARCHAR(100),
     PRIMARY KEY (id),
     CONSTRAINT prof_older_24
-        CHECK (DATEDIFF(TO_DAYS(dt), TO_DAYS(data_of_birth)) / 360 > 24)
+        CHECK (DATEDIFF(dt, data_of_birth) / 360 > 24)
 );

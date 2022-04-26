@@ -9,6 +9,7 @@ CREATE TABLE student
     faculty_name     VARCHAR(50) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (faculty_name) REFERENCES faculty (name),
-    CHECK (DATEDIFF(TO_DAYS(dt), TO_DAYS(birthday)) / 360 > 16),
-    CHECK ( DATEDIFF(TO_DAYS(redigration_date), TO_DAYS(birthday)) / 360 > 0 )
+    CONSTRAINT student_older_16
+        CHECK (DATEDIFF(dt, birthday) / 360 > 16),
+        CHECK ( DATEDIFF(redigration_date, birthday) / 360 > 0 )
 );
